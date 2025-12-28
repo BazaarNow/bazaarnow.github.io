@@ -26,6 +26,7 @@ body {
 body a {
   color: var(--accent);
 }
+
 .container {
   max-width: 1000px;
   margin: 1rem auto;
@@ -61,7 +62,9 @@ body a {
   flex: 1 0 auto;
   padding: 2rem 0;
 }
-
+main.container a:hover {
+  color: var(--bg);
+}
 main.container {
   display: flex;
   flex-direction: column;

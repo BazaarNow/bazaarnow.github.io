@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BazaarNow — Quick Commerce</title>
+    <meta
+      name="description"
+      content="Small, privacy-friendly quick commerce demo site for GitHub Pages."
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">BazaarNow</a>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h1>BazaarNow — Quick Local Commerce</h1>
+        <p>
+          We are building fast, privacy-respecting commerce experiences for
+          their customers.
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <a href="/privacy.html">Privacy Policy</a>
+        ·
+        <a href="/terms.html">Terms of Service</a>
+      </p>
+      <p>
+        &copy; <span id="year"></span> BAZAARINDIA TECHNOLOGIES PRIVATE LIMITED.
+      </p>
+    </footer>
+
+    <script>
+      document.getElementById("year") &&
+        (document.getElementById("year").textContent =
+          new Date().getFullYear());
+    </script>
+  </body>
+</html>

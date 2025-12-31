@@ -164,6 +164,13 @@ strong {
   font-weight: bolder;
 }
 
+.new-year-wish {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--bg);
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

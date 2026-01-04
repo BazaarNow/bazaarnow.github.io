@@ -42,11 +42,10 @@
         include damaged, defective, incorrect, or missing items, subject to
         verification and applicable conditions. Certain items, including
         perishable or consumable goods, may not be eligible for return or
-        refund. 
-        
-        <p>
-            Approved refunds will be processed to the original payment method or as store credit, within a reasonable timeframe.
-        </p>
+        refund.
+        <br />
+        Approved refunds will be processed to the original payment method or as
+        store credit, within a reasonable timeframe.
       </p>
     </main>
 
@@ -69,7 +68,14 @@
     </footer>
 
     <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+      document.getElementById("year") &&
+        (document.getElementById("year").textContent =
+          new Date().getFullYear());
+      const params = new URLSearchParams(window.location.search);
+      const isBazaarNowApp = params.get("bazaarnowapp") === "true";
+      if (isBazaarNowApp) {
+        document.getElementsByTagName("header")[0].remove();
+      }
     </script>
   </body>
 </html>

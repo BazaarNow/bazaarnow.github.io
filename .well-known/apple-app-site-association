@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "M4739FG9P4.com.bazaarnow.customerapp",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

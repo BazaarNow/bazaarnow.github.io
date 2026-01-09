@@ -164,6 +164,10 @@ strong {
   font-weight: bolder;
 }
 
+.error-404 {
+  font-size: 5rem;
+}
+
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

@@ -86,10 +86,31 @@
           console.log("[GA] Event sent: store_redirect →", store);
         }
 
+        function openAppOrStore() {
+          const appUrl = "bazaarnow://home";
+          const storeUrl =
+            "https://play.google.com/store/apps/details?id=com.bazaarnow.customerapp";
+
+          // Record the current time
+          const start = Date.now();
+
+          // Try to open the app
+          window.location.replace(appUrl);
+
+          // After 1 second, if the app did not open, redirect to Play Store
+          setTimeout(() => {
+            const end = Date.now();
+            // If the page is still here (difference < 1500ms), app likely not installed
+            if (end - start < 1500) {
+              window.location.replace(storeUrl);
+            }
+          }, 1000);
+        }
+
         // Redirect after short delay
         setTimeout(() => {
           if (platform === "android") {
-            window.location.replace(ANDROID_STORE);
+            openAppOrStore();
           } else if (platform === "ios") {
             window.location.replace(IOS_STORE);
           } else {

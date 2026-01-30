@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>BazaarNow — Quick Commerce</title>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="BazaarNow" />
+    <meta property="og:title" content="Namma BazaarNow" />
+    <meta
+      property="og:description"
+      content="500+ Mandya families shopped on BazaarNow this week 🛒 Fresh fruits, vegetables, groceries & essentials at low prices. Delivery is always FREE 🚚 Place your first order now"
+    />
+    <meta property="og:url" content="https://bazaarnow.in/" />
+    <meta
+      property="og:image"
+      content="https://ik.imagekit.io/27udpdyzm/app/appsflyer/bazaarnow.webp"
+    />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Namma BazaarNow" />
+    <meta
+      name="twitter:description"
+      content="500+ Mandya families shopped on BazaarNow this week 🛒 Fresh fruits, vegetables, groceries & essentials at low prices. Delivery is always FREE 🚚 Place your first order now"
+    />
+    <meta
+      name="twitter:image"
+      content="https://ik.imagekit.io/27udpdyzm/app/appsflyer/bazaarnow.webp"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-R80ZTJM0W7"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-R80ZTJM0W7");
+    </script>
+  </head>
+
+  <body>
+    <main style="text-align: center; padding: 50px">
+      <h1>Redirecting to BazaarNow App...</h1>
+      <p>
+        If you are not redirected automatically,
+        <a id="fallbackLink" href="#">click here</a>.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        const IOS_STORE =
+          "https://apps.apple.com/in/app/bazaarnow/id6756546224";
+        const ANDROID_STORE =
+          "https://play.google.com/store/apps/details?id=com.bazaarnow.customerapp";
+
+        const ua = navigator.userAgent || navigator.vendor;
+        let platform = "web";
+        if (/android/i.test(ua)) platform = "android";
+        else if (/iPhone|iPad|iPod/.test(ua)) platform = "ios";
+
+        // Set fallback link
+        const fallbackLink = document.getElementById("fallbackLink");
+        fallbackLink.href = platform === "android" ? ANDROID_STORE : IOS_STORE;
+
+        // Track GA event
+        if (typeof gtag === "function") {
+          gtag("event", "appstore_redirect", {
+            platform: platform,
+            page_path: window.location.pathname,
+          });
+          console.log("[GA] Event sent: appstore_redirect", platform);
+        }
+
+        // Redirect after short delay
+        setTimeout(() => {
+          if (platform === "android") {
+            window.location.replace(ANDROID_STORE);
+          } else if (platform === "ios") {
+            window.location.replace(IOS_STORE);
+          } else {
+            window.location.replace("/");
+          }
+        }, 500);
+      })();
+    </script>
+  </body>
+</html>

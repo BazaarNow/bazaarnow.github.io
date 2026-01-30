@@ -41,17 +41,11 @@
       gtag("config", "G-R80ZTJM0W7");
     </script>
     <script>
-      // Preserve path + query + hash
-      var redirect =
-        "/?" +
-        "path=" +
-        encodeURIComponent(location.pathname) +
-        "&query=" +
-        encodeURIComponent(location.search) +
-        "&hash=" +
-        encodeURIComponent(location.hash);
+      // Preserve full original URL (path + query + hash)
+      var original = location.pathname + location.search + location.hash;
 
-      window.location.replace(redirect);
+      // Redirect to index with full URL encoded
+      window.location.replace("/?redirect=" + encodeURIComponent(original));
     </script>
   </head>
 

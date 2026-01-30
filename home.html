@@ -68,6 +68,7 @@
 
         if (/android/i.test(ua)) {
           platform = "android";
+          window.open("bazaarnow://home");
         } else if (/iPhone|iPad|iPod/.test(ua)) {
           platform = "ios";
         }

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Returns and Refund Policy — BazaarNow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Standard favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" />
+
+    <!-- PNG favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Apple iOS icon -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="assets/manifest.json" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img src="assets/images/apple-touch-icon.png" class="logo" />
+        <img src="assets/images/brand_name.svg" class="brand-name" />
+      </a>
+    </header>
+
+    <main class="container">
+      <h1>FAQs</h1>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-links">
+        <p>
+          <a href="/returns-refund-policy">Returns and Refund Policy</a>
+          <span class="dot">·</span>
+          <a href="/shipping-policy">Shipping Policy</a>
+        </p>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <span class="dot">·</span>
+        <a href="/terms-of-service">Terms of Service</a>
+        <span class="dot">·</span>
+        <a href="/contact-us">Contact Us</a>
+      </div>
+      <div class="copyright">
+        &copy; <span id="year"></span> BAZAARINDIA TECHNOLOGIES PRIVATE LIMITED.
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year") &&
+        (document.getElementById("year").textContent =
+          new Date().getFullYear());
+      const params = new URLSearchParams(window.location.search);
+      const isBazaarNowApp = params.get("bazaarnowapp") === "true";
+      if (isBazaarNowApp) {
+        document.getElementsByTagName("header")[0].remove();
+        document.getElementsByTagName("footer")[0].remove();
+      }
+    </script>
+  </body>
+</html>

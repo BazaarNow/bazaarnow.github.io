@@ -27,7 +27,6 @@
     <link rel="manifest" href="assets/manifest.json" />
 
     <link rel="stylesheet" href="/css/style.css" />
-    \
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website" />
@@ -77,11 +76,18 @@
     </script>
     <script>
       (function () {
+        console.log("[ROUTER] index.html loaded");
+        console.log("[ROUTER] Full URL:", window.location.href);
+
         const params = new URLSearchParams(window.location.search);
 
         const path = params.get("path");
         const query = params.get("query");
         const hash = params.get("hash");
+
+        console.log("[ROUTER] path =", path);
+        console.log("[ROUTER] query =", query);
+        console.log("[ROUTER] hash =", hash);
 
         if (path) {
           const newUrl =
@@ -89,7 +95,10 @@
             (query && query !== "?" ? query : "") +
             (hash && hash !== "#" ? hash : "");
 
+          console.log("[ROUTER] Rewriting URL to:", newUrl);
           window.history.replaceState({}, "", newUrl);
+        } else {
+          console.log("[ROUTER] No path param → normal load");
         }
       })();
     </script>
@@ -145,59 +154,86 @@
 
   <script>
     (function () {
+      console.log("[DEEPLINK] Script started");
+
       const params = new URLSearchParams(window.location.search);
+      console.log("[DEEPLINK] URL params:", window.location.search);
+
       const isDeferred = params.get("d") === "1";
+      console.log("[DEEPLINK] isDeferred =", isDeferred);
 
-      // Only handle deferred deeplink traffic
-      if (!isDeferred) return;
+      if (!isDeferred) {
+        console.log("[DEEPLINK] d=1 not found → exit");
+        return;
+      }
 
-      // Prevent repeat execution in same session
-      if (sessionStorage.getItem("dd_handled")) return;
+      if (sessionStorage.getItem("dd_handled")) {
+        console.log("[DEEPLINK] Already handled → exit");
+        return;
+      }
+
       sessionStorage.setItem("dd_handled", "1");
+      console.log("[DEEPLINK] Marked as handled");
 
       const IOS_STORE = "https://apps.apple.com/in/app/bazaarnow/id6756546224";
       const ANDROID_STORE =
         "https://play.google.com/store/apps/details?id=com.bazaarnow.customerapp";
 
       const ua = navigator.userAgent || navigator.vendor;
-      const path = window.location.pathname;
+      console.log("[DEEPLINK] UA:", ua);
 
       let platform = "web";
       if (/android/i.test(ua)) platform = "android";
       else if (/iPhone|iPad|iPod/.test(ua)) platform = "ios";
 
-      // 1️⃣ Track deferred deeplink visit
-      gtag("event", "deferred_deeplink_visit", {
-        page_path: path,
-        deeplink_flag: 1,
-        platform: platform,
-      });
+      console.log("[DEEPLINK] Platform =", platform);
+
+      const path = window.location.pathname;
+      console.log("[DEEPLINK] Path =", path);
+
+      if (typeof gtag === "function") {
+        console.log("[DEEPLINK] Sending GA event");
+        gtag("event", "deferred_deeplink_visit", {
+          page_path: path,
+          deeplink_flag: 1,
+          platform: platform,
+        });
+      } else {
+        console.warn("[DEEPLINK] gtag NOT available");
+      }
 
       let appOpened = false;
 
-      // Detect successful app open
       document.addEventListener("visibilitychange", () => {
-        if (document.hidden) appOpened = true;
+        if (document.hidden) {
+          appOpened = true;
+          console.log("[DEEPLINK] App opened (visibility hidden)");
+        }
       });
 
-      // 2️⃣ Attempt app open via Universal/App Link
       const cleanUrl = window.location.href.replace(/[?&]d=1/, "");
+      console.log("[DEEPLINK] Attempting app open:", cleanUrl);
+
       window.location.href = cleanUrl;
 
-      // 3️⃣ Fallback to store if app not installed
       setTimeout(() => {
-        if (appOpened) return;
+        if (appOpened) {
+          console.log("[DEEPLINK] App opened → no store redirect");
+          return;
+        }
+
+        console.log("[DEEPLINK] App NOT opened → redirecting to store");
 
         if (platform === "android") {
-          gtag("event", "redirect_playstore", {
-            page_path: path,
-          });
+          console.log("[DEEPLINK] Redirect → Play Store");
+          gtag("event", "redirect_playstore", { page_path: path });
           window.location.replace(ANDROID_STORE);
         } else if (platform === "ios") {
-          gtag("event", "redirect_appstore", {
-            page_path: path,
-          });
+          console.log("[DEEPLINK] Redirect → App Store");
+          gtag("event", "redirect_appstore", { page_path: path });
           window.location.replace(IOS_STORE);
+        } else {
+          console.log("[DEEPLINK] Web platform → no redirect");
         }
       }, 1200);
     })();

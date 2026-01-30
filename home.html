@@ -64,20 +64,25 @@
 
         const ua = navigator.userAgent || navigator.vendor;
         let platform = "web";
-        if (/android/i.test(ua)) platform = "android";
-        else if (/iPhone|iPad|iPod/.test(ua)) platform = "ios";
+        let store = ""; // apple / android
+
+        if (/android/i.test(ua)) {
+          platform = "android";
+        } else if (/iPhone|iPad|iPod/.test(ua)) {
+          platform = "ios";
+        }
 
         // Set fallback link
         const fallbackLink = document.getElementById("fallbackLink");
         fallbackLink.href = platform === "android" ? ANDROID_STORE : IOS_STORE;
 
-        // Track GA event
+        // Track GA event: store_redirect
         if (typeof gtag === "function") {
-          gtag("event", "appstore_redirect", {
-            platform: platform,
+          gtag("event", "store_redirect", {
+            platform, // apple or android
             page_path: window.location.pathname,
           });
-          console.log("[GA] Event sent: appstore_redirect", platform);
+          console.log("[GA] Event sent: store_redirect →", store);
         }
 
         // Redirect after short delay

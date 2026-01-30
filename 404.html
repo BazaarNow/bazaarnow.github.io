@@ -41,22 +41,17 @@
       gtag("config", "G-R80ZTJM0W7");
     </script>
     <script>
-      (function () {
-        const params = new URLSearchParams(window.location.search);
+      // Preserve path + query + hash
+      var redirect =
+        "/?" +
+        "path=" +
+        encodeURIComponent(location.pathname) +
+        "&query=" +
+        encodeURIComponent(location.search) +
+        "&hash=" +
+        encodeURIComponent(location.hash);
 
-        const path = params.get("path");
-        const query = params.get("query");
-        const hash = params.get("hash");
-
-        if (path) {
-          const newUrl =
-            path +
-            (query && query !== "?" ? query : "") +
-            (hash && hash !== "#" ? hash : "");
-
-          window.history.replaceState({}, "", newUrl);
-        }
-      })();
+      window.location.replace(redirect);
     </script>
   </head>
 

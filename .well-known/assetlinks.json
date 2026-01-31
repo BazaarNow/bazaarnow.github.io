@@ -5,7 +5,9 @@
       "namespace": "android_app",
       "package_name": "com.bazaarnow.customerapp",
       "sha256_cert_fingerprints": [
-        "AD:06:9B:38:E1:37:EB:A4:13:23:2C:A5:0B:0C:0B:8D:D3:F7:3F:87:6D:26:9B:09:F2:5F:3E:91:CD:25:48:5F"
+        "ad069b38e137eba413232ca50b0c0b8dd3f73f876d269b09f25f3e91cd25485f",
+        "AD:06:9B:38:E1:37:EB:A4:13:23:2C:A5:0B:0C:0B:8D:D3:F7:3F:87:6D:26:9B:09:F2:5F:3E:91:CD:25:48:5F",
+        "D2:9C:8F:82:C4:18:09:0E:3D:3A:D0:5F:23:8C:C6:B4:F8:94:F2:84:E9:42:6D:7E:E2:C2:AC:2D:7D:B8:5B:D6"
       ]
     }
   }

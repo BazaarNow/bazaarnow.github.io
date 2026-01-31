@@ -68,7 +68,6 @@
 
         if (/android/i.test(ua)) {
           platform = "android";
-          window.location = "bazaarnow://home";
         } else if (/iPhone|iPad|iPod/.test(ua)) {
           platform = "ios";
         }
@@ -80,7 +79,7 @@
         // Track GA event: store_redirect
         if (typeof gtag === "function") {
           gtag("event", "store_redirect", {
-            platform, // apple or android
+            platform,
             page_path: window.location.pathname,
           });
           console.log("[GA] Event sent: store_redirect →", store);

@@ -1,0 +1,61 @@
+body {
+    background-color: #394789;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+header img {
+    height: 3rem;
+}
+
+.title {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.description {
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+
+.guide {
+    background-color: white;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 1.25rem;
+    text-align: center;
+    color: #394789;
+}
+
+.guide .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #394789;
+}
+
+.guide .description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #394789;
+}
+
+img {
+    width: 100%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 500px)  {
+    body {
+        margin: 0 25vw;
+    }
+}
